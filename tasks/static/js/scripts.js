@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    const baseUrl ='http://localhost:8000/';
+    const baseUrl ='https://to-do-list-django-matheus.herokuapp.com/';
     const deletar = $('.delete-btn');
     const searchBtn = $('#search-btn');
     const searchForm = $('#search-form');
