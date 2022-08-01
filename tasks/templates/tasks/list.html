@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de tarefas{% endblock %} 
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Lista de tarefas</h1>
+        <div class="container dashboard">
+            <div class="col-4 dashboard-box" id="dashboard-lastdays">
+                <h5>Finaziladas nos ultimos 30 dias:</h5>
+                <span>{{ taskDoneRecently }}</span>
+            </div>
+            <div class="col-4 dashboard-box" id="dashboard-done">
+                <h5>Tarefas finalizadas:</h5>
+                <span>{{ taskDone }}</span>
+            </div>
+            <div class="col-4 dashboard-box" id="dashboard-doing">
+                <h5>Tarefas à fazer:</h5>
+                <span>{{taskDoing}}</span>
+            </div>
+        </div>
+        <a id="add-link-task" href="newtask/">
+            <div class="col-2 add-div">
+                <i class="fas fa-plus"></i> Adicionar tarefa
+            </div>
+        </a>
+        
+            <div class="col-9 search-div">
+                <form method="get" id="search-form"> <!--Não precisa por o action pq o django ja sabe q é o msm-->
+                    <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da tarefa" value="{{ request.GET.search }}"> 
+                    <i class="fas fa-search" id="search-btn"></i>                                                  <!--Esse value faz o campo do input permanecer o valor informado no get-->
+                </form>  
+            </div>
+            <div class="col-12 filter-div">
+                <span>Filtrar por:</span>
+                <select name="filter" id="filter" class="form-control">
+                    <option value="">Escolha uma opção</option>
+                    <option value="done">Tarefas concluídas</option>
+                    <option value="doing">Tarefas à fazer</option>
+                </select>
+            </div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        <ul class="task-list">
+            {% for task in tasks %}
+            {% if task.done == 'doing' %}
+                <li class="task-item">
+            {% else %}
+                <li class="task-item done">
+            {% endif %}
+                <span><a href="task/{{task.id}}" style="text-decoration: none;">{{task.title}}</a></span>
+                <a href="delete/{{task.id}}" class="delete-btn" id="deletar"><span><i class="fas fa-trash"></i></span></a> <!-- Jogando os dados do model ppra view-->
+                <a href="edit/{{task.id}}"><span><i class="fas fa-edit"></i></span></a><!-- Igual era no Node -->
+                <a href="changestatus/{{task.id}}"><span><i class="fas fa-check"></i></span></a>
+              </li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            <span class="step-link">
+                {% if tasks.has_previous %} <!--S tiver na primeira página não mostra as tasks-->
+                    <a href="?page={{ tasks.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+                {% if tasks.paginator.num_pages %} <!--Se houver a paginação elexe exibe-->
+                <span class="current">              <!--No caso nas busca, mas serve para todas as situações-->
+                    {{ tasks.number }} de {{ tasks.paginator.num_pages }} <!--Mostrar a página atual-->
+                </span>
+                    {% endif %}
+                {% if tasks.has_next %}
+                    <a href="?page={{ tasks.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %} <!-- Verificar se há página seguinte e mostra gual ao primeiro-->
+            </span>
+        </div>
+    </div>
+{% endblock %}

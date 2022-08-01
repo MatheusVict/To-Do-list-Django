@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Criação de tarefas{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <h1>Adicione uma nova tarefa</h1>
+        <form method="post">
+            {% csrf_token %} <!-- Django não aceita formulario q não tenha essa tag-->
+            {{ form|crispy }} <!--Exibir o form do bootstrap-->
+            <input type="submit" class="btn btn-success mt-4" value="Criar tarefa">
+        </form>
+    </div>
+{% endblock %}
