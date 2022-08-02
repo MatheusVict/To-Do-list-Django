@@ -1,8 +1,9 @@
 from telnetlib import STATUS
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.db.models.deletion import CASCADE
-
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 class task(models.Model):
     # Criando banco
