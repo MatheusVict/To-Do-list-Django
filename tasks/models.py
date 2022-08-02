@@ -1,6 +1,7 @@
 from telnetlib import STATUS
 from django.db import models
 from django.contrib.auth import get_user_model
+from tkinter import CASCADE
 
 class task(models.Model):
     # Criando banco
