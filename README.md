@@ -6,13 +6,13 @@
 <h3>🔙É um projeto com foco maior no back-end end para demonstrar minhas habilidades<br><br>
 Possui funções como👩‍💻:</h3>
 
-- Validação e autenticação de cadastro e login fornecidos pelo Django
+- Validação e autenticação de cadastro e login fornecidos pelo Django.
 - Área administrativa gerada pelo Django.
-- O usuário pode excluir, editar, criar e ver suas tasks
-- Cada usuário vê e mexe apenas nas suas tasks
+- O usuário pode excluir, editar, criar e ver suas tasks.
+- Cada usuário vê e mexe apenas nas suas tasks.
   - Quando um usuário é apagado por um adm, todos as suas tasks são apagadas juntos.
 - O usuário pode pesquisar por uma task pelo seu nome.
-- Possui filtro de tasks para aquelas que que já foram feitas e as que ainda estão en andamento.
+- Possui filtro de tasks para aquelas que que já foram feitas e as que ainda estão em andamento.
 - O usuário pode editar os status das tasks.
 - Possui paginação e exibe apenas 3 tasks por página.
 - Exibe uma dashboard que mostras a quantidade de tasks feitas nos últimos 30 dias e as que ainda não foram feitas.
