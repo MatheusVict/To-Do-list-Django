@@ -54,7 +54,7 @@ Possui funções como👩‍💻:</h3>
 
 > OBS: A demora no carregamento das páginas se deve a gravação da tela que consumiu recursos da máquina.
 
-```
+```ruby
   {
     "nome": "To Do list",
     "author": "Matheus victor",
