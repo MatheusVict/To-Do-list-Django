@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    const baseUrl ='https://to-do-list-matheus.herokuapp.com/'
+    const baseUrl ='http://localhost:8000'
     const deletar = $('.delete-btn');
     const searchBtn = $('#search-btn');
     const searchForm = $('#search-form');
